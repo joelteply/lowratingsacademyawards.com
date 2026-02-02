@@ -1,5 +1,41 @@
 import './style.css';
 
+// Hero carousel
+const slides = document.querySelectorAll<HTMLElement>('.hero-slide');
+const dotsContainer = document.querySelector('.hero-dots');
+let currentSlide = 0;
+let slideInterval: ReturnType<typeof setInterval>;
+
+if (slides.length > 0 && dotsContainer) {
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = `hero-dot${i === 0 ? ' active' : ''}`;
+    dot.setAttribute('aria-label', `Slide ${i + 1}`);
+    dot.addEventListener('click', () => goToSlide(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  function goToSlide(index: number) {
+    slides[currentSlide].classList.remove('active');
+    dotsContainer!.children[currentSlide].classList.remove('active');
+    currentSlide = index;
+    slides[currentSlide].classList.add('active');
+    dotsContainer!.children[currentSlide].classList.add('active');
+    resetInterval();
+  }
+
+  function nextSlide() {
+    goToSlide((currentSlide + 1) % slides.length);
+  }
+
+  function resetInterval() {
+    clearInterval(slideInterval);
+    slideInterval = setInterval(nextSlide, 10000);
+  }
+
+  resetInterval();
+}
+
 // Intersection Observer for scroll animations
 const observer = new IntersectionObserver(
   (entries) => {

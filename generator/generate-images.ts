@@ -41,7 +41,7 @@ function loadEnv(): Record<string, string> {
 }
 
 const env = loadEnv();
-const OPENAI_API_KEY = env['OPENAI_API_KEY'];
+const XAI_API_KEY = env['XAI_API_KEY'];
 
 // ---------------------------------------------------------------------------
 // Wikimedia Commons downloads (CC-licensed photos of real people)
@@ -149,7 +149,7 @@ interface ScenePrompt {
   name: string;
   filename: string;
   prompt: string;
-  size: '1024x1024' | '1792x1024' | '1024x1792';
+  aspect_ratio: string;
 }
 
 const SCENE_PROMPTS: ScenePrompt[] = [
@@ -158,42 +158,63 @@ const SCENE_PROMPTS: ScenePrompt[] = [
     filename: 'hero_banner.png',
     prompt:
       'A hilariously cheap awards ceremony set up in a parking lot at night. A small folding table with a spray-painted gold plastic trophy on it. Christmas string lights tangled on parking meters. A wrinkled red bath towel laid out as a "red carpet" on the asphalt. A cardboard sign reading "AWARDS" in gold spray paint. Cinematic wide shot, dramatic lighting that contrasts with the absurd cheapness. Photorealistic.',
-    size: '1792x1024',
+    aspect_ratio: '16:9',
   },
   {
-    name: 'Trophy',
-    filename: 'trophy.png',
+    name: 'Four Seasons Total Landscaping',
+    filename: 'four_seasons.png',
     prompt:
-      'A participation trophy from a dollar store, crudely spray-painted gold, sitting on a folding card table with a paper tablecloth. The trophy has a tiny generic figure on top. There is visible dripping gold spray paint and fingerprints. Shot against a dark velvet curtain backdrop that has a visible seam and is slightly crooked. Studio product photography style, dramatic golden lighting.',
-    size: '1024x1024',
+      'A gritty industrial parking lot behind a small landscaping business. Concrete ground with oil stains and a green garden hose coiled on the ground. A wooden podium with a microphone is set up in front of a metal garage door. Folding chairs face the podium. An industrial metal frame/gantry is visible overhead. In the background, a strip mall with a neon "ADULT" sign and a crematorium chimney. A hand-painted banner reading "AWARDS CEREMONY" hangs crookedly between two poles. Overcast sky. Wide angle photojournalism style, gritty, unglamorous, documentary photography. Very similar to Rudy Giuliani Four Seasons Total Landscaping press conference.',
+    aspect_ratio: '16:9',
+  },
+  {
+    name: 'Covfefe Refreshments',
+    filename: 'covfefe.png',
+    prompt:
+      'A wide shot of a White House state dinner table, but instead of fine dining it is covered in fast food. Stacks of McDonald\'s Big Macs and cheeseburgers still in wrappers, arranged in a pyramid on silver platters. Wendy\'s bags. Boxes of Domino\'s pizza. Diet Coke cans arranged like fine wine. A coffee urn labeled "COVFEFE" in gold letters. Candelabras illuminating the fast food. The Abraham Lincoln portrait visible on the wall behind. Photorealistic, warm candlelight, absurd contrast between the formal setting and the junk food. Based on the real Trump White House fast food dinner for Clemson.',
+    aspect_ratio: '16:9',
+  },
+  {
+    name: 'Tiny Hands Trophy',
+    filename: 'tiny_hands_trophy.png',
+    prompt:
+      'A dramatic wide shot of a single cheap spray-painted gold Oscar-style trophy statue displayed on a red velvet pedestal in a dark empty theatre. The trophy has comically tiny hands holding a miniature globe. A single golden spotlight illuminates it from above. The theatre seats are empty folding chairs. The base has a gold plaque. Dramatic cinematic lighting with lens flare. The grandeur of the setting contrasts with the obvious cheapness of the trophy.',
+    aspect_ratio: '16:9',
   },
   {
     name: 'Melania Movie Poster Parody',
     filename: 'melania_poster.png',
     prompt:
       'A satirical movie poster for a fictional documentary. Golden gilded ornate baroque picture frame, but the frame is clearly plastic and spray-painted. Inside the frame is a view of a luxurious marble hallway with gold chandeliers, but it looks like a hotel lobby. At the bottom in elegant serif font: "VIRTUALLY UNWATCHABLE" and "1.3 STARS". The overall feel is ostentatious luxury meets budget filmmaking. No people in the image.',
-    size: '1024x1792',
+    aspect_ratio: '3:4',
   },
   {
     name: 'Going the Extra Mule',
     filename: 'mule_award.png',
     prompt:
       'A cartoon-style illustration of a stubborn mule wearing a tiny golden crown, standing next to a ballot drop box in a parking lot. The mule has a defiant expression and is holding a rolled-up document that says "DEBUNKED" in its mouth. Humorous editorial cartoon style with bold outlines. Golden warm color palette.',
-    size: '1024x1024',
+    aspect_ratio: '1:1',
   },
   {
     name: 'Best Western',
     filename: 'best_western.png',
     prompt:
       'A Wild West movie set that has clearly gone wrong. A broken director\'s chair tipped over in a dusty desert town set. A prop gun lying on the ground with a "SAFETY FIRST" sign that has fallen off the wall. Tumbleweeds rolling through. The scene has dramatic golden-hour western lighting but everything is slightly askew and amateur. Cinematic wide shot, film grain.',
-    size: '1792x1024',
+    aspect_ratio: '16:9',
   },
   {
-    name: 'Parking Lot Venue',
-    filename: 'venue.png',
+    name: 'Red Carpet Security',
+    filename: 'security.png',
     prompt:
-      'A parking lot behind a large theatre building at night, set up as a makeshift outdoor event venue. Folding chairs arranged in rows on asphalt, facing a small wooden stage made of pallets. A hand-painted banner hangs between two light poles reading "LOW RATINGS ACADEMY AWARDS". Christmas lights strung haphazardly. A single spotlight duct-taped to a parking meter. Cinematic night photography, moody golden lighting.',
-    size: '1792x1024',
+      'A red carpet entrance to an awards ceremony, but the "red carpet" is actually a long red bath towel duct-taped to the sidewalk. The velvet rope barriers are made from pool noodles and jump ropes. The "security" is a single orange traffic cone with a stern note taped to it reading "NO ENTRY WITHOUT INVITATION". A bouncer name tag that reads "SECURITY (Volunteer)" is stuck to the cone. Night time, dramatic spotlights (one is a flashlight taped to a broom handle). Photorealistic, cinematic.',
+    aspect_ratio: '16:9',
+  },
+  {
+    name: 'OG Share Card',
+    filename: 'og_card.png',
+    prompt:
+      'A dramatic movie awards show poster. Dark background with golden spotlight beams. A cheap spray-painted gold participation trophy center stage on a folding table. Above it in large elegant gold serif text: "THE LOW RATINGS ACADEMY AWARDS". Below in smaller text: "VIRTUALLY UNWATCHABLE". Red bath towel carpet leading to the trophy. Christmas lights in background. Cinematic, dramatic, absurdly cheap production values.',
+    aspect_ratio: '16:9',
   },
 ];
 
@@ -239,58 +260,58 @@ function download(url: string, dest: string): Promise<void> {
 }
 
 // ---------------------------------------------------------------------------
-// DALL-E 3 generation
+// xAI Grok image generation
 // ---------------------------------------------------------------------------
 
-async function generateImage(prompt: string, size: string, dest: string): Promise<void> {
+async function generateImage(prompt: string, aspect_ratio: string, dest: string): Promise<void> {
   if (existsSync(dest)) {
     console.log(`  [skip] ${dest} already exists`);
     return;
   }
 
-  if (!OPENAI_API_KEY) {
-    console.error('  [error] No OPENAI_API_KEY found');
-    return;
+  if (!XAI_API_KEY) {
+    console.error('  [error] No XAI_API_KEY found in ~/.continuum/config.env');
+    process.exit(1);
   }
 
-  console.log(`  [generating] ${dest}...`);
+  console.log(`  [generating] ${dest} (${aspect_ratio})...`);
 
   const body = JSON.stringify({
-    model: 'dall-e-3',
+    model: 'grok-imagine-image',
     prompt,
     n: 1,
-    size,
-    quality: 'standard',
+    aspect_ratio,
     response_format: 'url',
   });
 
-  const response = await fetch('https://api.openai.com/v1/images/generations', {
+  const response = await fetch('https://api.x.ai/v1/images/generations', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${OPENAI_API_KEY}`,
+      Authorization: `Bearer ${XAI_API_KEY}`,
     },
     body,
   });
 
   if (!response.ok) {
     const err = await response.text();
-    console.error(`  [error] DALL-E API: ${response.status} ${err}`);
-    return;
+    console.error(`  [error] xAI API: ${response.status} ${err}`);
+    process.exit(1);
   }
 
-  const json = (await response.json()) as { data: Array<{ url: string; revised_prompt: string }> };
+  const json = (await response.json()) as { data: Array<{ url: string; revised_prompt?: string }> };
   const imageUrl = json.data[0]?.url;
   const revisedPrompt = json.data[0]?.revised_prompt;
 
   if (!imageUrl) {
     console.error('  [error] No image URL in response');
-    return;
+    process.exit(1);
   }
 
-  console.log(`  [revised prompt] ${revisedPrompt}`);
+  if (revisedPrompt) {
+    console.log(`  [revised prompt] ${revisedPrompt}`);
+  }
 
-  // Download the generated image
   await download(imageUrl, dest);
 }
 
@@ -320,7 +341,7 @@ async function main() {
   console.log('\n=== Generating scene images via DALL-E 3 ===\n');
   for (const scene of SCENE_PROMPTS) {
     console.log(`${scene.name}:`);
-    await generateImage(scene.prompt, scene.size, join(SCENES_DIR, scene.filename));
+    await generateImage(scene.prompt, scene.aspect_ratio, join(SCENES_DIR, scene.filename));
   }
 
   console.log('\n=== Done! ===');
