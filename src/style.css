@@ -112,68 +112,139 @@ body {
   position: relative;
   background: var(--bg-darker);
   color: var(--text-light);
-  text-align: center;
-  padding: 80px 24px 100px;
   overflow: hidden;
+  height: 85vh;
+  min-height: 500px;
+  max-height: 900px;
 }
 
-.hero::before {
-  content: '';
+.hero-slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.hero-slide.active {
+  opacity: 1;
+}
+
+.hero-slide-overlay {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background:
-    radial-gradient(ellipse at 20% 50%, rgba(199, 163, 58, 0.15) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 50%, rgba(199, 163, 58, 0.1) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 100%);
-  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.15) 50%,
+    rgba(0, 0, 0, 0.85) 100%
+  );
 }
 
-.hero-content {
-  position: relative;
+.hero-slide-content {
+  position: absolute;
+  bottom: 48px;
+  left: 0;
+  right: 0;
+  padding: 0 48px;
   z-index: 1;
 }
 
-.hero-date {
-  font-size: 12px;
-  letter-spacing: 4px;
-  color: var(--gold-light);
-  margin-bottom: 24px;
-}
-
-.hero-title {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(36px, 7vw, 72px);
-  font-weight: 900;
-  line-height: 1.05;
-  color: var(--gold);
-  margin-bottom: 16px;
-  text-shadow: 0 2px 20px rgba(199, 163, 58, 0.3);
-}
-
-.hero-tagline {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(18px, 3vw, 28px);
-  font-style: italic;
-  color: var(--gold-light);
-  margin-bottom: 32px;
-}
-
-.hero-venue {
-  font-size: 14px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--text-light);
-  margin-bottom: 16px;
-  line-height: 1.8;
-}
-
-.hero-broadcast {
+.hero-slide-date {
   font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.8;
+  letter-spacing: 1px;
+  color: var(--gold-light);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.hero-slide-title {
+  font-family: 'Playfair Display', Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif;
+  font-size: clamp(24px, 3.5vw, 42px);
+  font-weight: 400;
+  line-height: 1.15;
+  color: #fff;
+  margin-bottom: 8px;
+  max-width: 960px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hero-slide-subtitle {
+  font-family: 'Playfair Display', Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif;
+  font-size: clamp(14px, 1.5vw, 18px);
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 900px;
+  line-height: 1.5;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.hero-slide-more {
+  display: inline-block;
+  font-size: 12px;
+  color: #fff;
+  margin-top: 8px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.sharpie-cross {
+  text-decoration: line-through;
+  text-decoration-thickness: 3px;
+  text-decoration-color: #aaa;
+}
+
+.sharpie {
+  font-family: 'Comic Neue', 'Marker Felt', cursive;
+  font-weight: 700;
+  color: #aaa;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  font-style: italic;
+  transform: rotate(-2deg);
+  display: inline-block;
+}
+
+.hero-dots {
+  position: absolute;
+  bottom: 24px;
+  left: 48px;
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.hero-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: background 0.3s;
+  border: none;
+  padding: 0;
+}
+
+.hero-dot.active {
+  background: var(--gold);
 }
 
 .budget-note {
@@ -846,7 +917,18 @@ body {
   }
 
   .hero {
-    padding: 48px 16px 64px;
+    height: 65vh;
+    min-height: 400px;
+  }
+
+  .hero-slide-content {
+    bottom: 48px;
+    padding: 0 20px;
+  }
+
+  .hero-dots {
+    left: 20px;
+    bottom: 16px;
   }
 
   .staff-grid {
