@@ -1,11 +1,11 @@
-# Angular specific
+# Build output
 /dist/
 /out-tsc/
 /tmp/
 /coverage/
-/e2e/test-output/
-/.angular/
-.angular/
+
+# High-res originals (regenerate with: npm run generate-images)
+# Site images in public/images/ ARE checked in
 
 # Node modules and dependency files
 /node_modules/
