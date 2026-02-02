@@ -443,6 +443,44 @@ body {
   margin-top: 16px;
 }
 
+.melania-award {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 2px solid var(--gold-dark);
+}
+
+.melania-award-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 20px;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
+.melania-award-desc {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.melania-quote {
+  font-style: italic;
+  font-size: 15px;
+  color: var(--gold-light);
+  line-height: 1.7;
+  border-left: 3px solid var(--gold-dark);
+  padding: 16px 20px;
+  margin: 0 0 16px 0;
+  background: rgba(199, 163, 58, 0.06);
+}
+
+.melania-award-note {
+  font-size: 13px;
+  color: #999;
+  line-height: 1.5;
+}
+
 /* ==========================================================================
    Nominees / Awards Section
    ========================================================================== */
