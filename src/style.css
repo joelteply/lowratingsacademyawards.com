@@ -1,0 +1,821 @@
+/* ==========================================================================
+   THE LOW RATINGS ACADEMY AWARDS
+   "Virtually Unwatchable" — A Parody
+   ========================================================================== */
+
+:root {
+  /* Oscars gold... but cheaper */
+  --gold: #c7a33a;
+  --gold-light: #dfc66e;
+  --gold-dark: #8b6914;
+  --gold-shimmer: #f5e6a3;
+  --bg-dark: #1a1a1a;
+  --bg-darker: #0d0d0d;
+  --bg-cream: #faf8f0;
+  --text-dark: #1a1a1a;
+  --text-light: #faf8f0;
+  --text-muted: #888;
+  --red-carpet: #8b1a1a;
+  --budget-pink: #ff69b4;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+  color: var(--text-dark);
+  background: var(--bg-cream);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ==========================================================================
+   Top Banner — Mimics the Oscars museum banner
+   ========================================================================== */
+
+.top-banner {
+  background: var(--bg-dark);
+  color: var(--gold);
+  text-align: center;
+  padding: 8px 16px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Header / Navigation
+   ========================================================================== */
+
+.site-header {
+  background: var(--bg-cream);
+  border-bottom: 1px solid #e0d9c8;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 16px 24px;
+  max-width: 960px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  color: var(--text-dark);
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: var(--gold);
+}
+
+.logo {
+  padding: 0 16px;
+}
+
+.trophy-icon {
+  font-size: 36px;
+  filter: grayscale(0.3) brightness(0.9);
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  background: var(--bg-darker);
+  color: var(--text-light);
+  text-align: center;
+  padding: 80px 24px 100px;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(199, 163, 58, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(199, 163, 58, 0.1) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 100%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-date {
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: var(--gold-light);
+  margin-bottom: 24px;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(36px, 7vw, 72px);
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--gold);
+  margin-bottom: 16px;
+  text-shadow: 0 2px 20px rgba(199, 163, 58, 0.3);
+}
+
+.hero-tagline {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(18px, 3vw, 28px);
+  font-style: italic;
+  color: var(--gold-light);
+  margin-bottom: 32px;
+}
+
+.hero-venue {
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 16px;
+  line-height: 1.8;
+}
+
+.hero-broadcast {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.budget-note {
+  font-family: 'Comic Neue', cursive;
+  font-size: 11px;
+  color: var(--gold-dark);
+  font-style: italic;
+  display: block;
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   Section Titles
+   ========================================================================== */
+
+.section {
+  padding: 64px 0;
+}
+
+.section-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(24px, 4vw, 40px);
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.gold-title {
+  color: var(--gold);
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 48px;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Staff Section
+   ========================================================================== */
+
+.staff-section {
+  background: var(--bg-cream);
+}
+
+.staff-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.staff-card {
+  text-align: center;
+}
+
+.staff-image-placeholder {
+  width: 200px;
+  height: 260px;
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg, #e0d9c8 0%, #d4cbb5 100%);
+  border: 2px dashed var(--gold-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.placeholder-text {
+  font-family: 'Comic Neue', cursive;
+  font-size: 12px;
+  color: var(--gold-dark);
+  text-align: center;
+  line-height: 1.4;
+}
+
+.staff-role {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.staff-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+
+.staff-quote {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.6;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.quote-attr {
+  color: var(--gold-dark);
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.staff-footnote {
+  margin-top: 8px;
+  max-width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ==========================================================================
+   Featured Film Section
+   ========================================================================== */
+
+.featured-section {
+  background: var(--bg-dark);
+  color: var(--text-light);
+}
+
+.featured-section .gold-title {
+  color: var(--gold);
+}
+
+.featured-film {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 48px;
+  margin-top: 48px;
+  align-items: start;
+}
+
+@media (max-width: 700px) {
+  .featured-film {
+    grid-template-columns: 1fr;
+  }
+}
+
+.poster-placeholder {
+  background: linear-gradient(135deg, var(--gold-dark) 0%, #3a2f0f 100%);
+  border: 3px solid var(--gold);
+  aspect-ratio: 2/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.poster-inner {
+  text-align: center;
+  padding: 24px;
+}
+
+.poster-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--gold);
+  margin-bottom: 16px;
+  letter-spacing: 4px;
+}
+
+.poster-rating {
+  font-size: 24px;
+  color: var(--gold-light);
+  margin-bottom: 8px;
+}
+
+.poster-meta {
+  font-size: 11px;
+  color: var(--gold-shimmer);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.poster-rt,
+.poster-audience {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.poster-note {
+  font-size: 11px;
+  color: var(--gold-dark);
+  font-style: italic;
+  margin-top: 16px;
+  line-height: 1.4;
+}
+
+.featured-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.featured-title .year {
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 20px;
+}
+
+.featured-director {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.featured-desc {
+  font-size: 15px;
+  color: #ccc;
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.featured-stats {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-value {
+  display: block;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.stat-label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.featured-review {
+  font-size: 14px;
+  color: #999;
+  font-style: italic;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.featured-section .budget-note {
+  color: #666;
+  margin-top: 16px;
+}
+
+/* ==========================================================================
+   Nominees / Awards Section
+   ========================================================================== */
+
+.nominees-section {
+  background: var(--bg-cream);
+}
+
+.category {
+  margin-bottom: 56px;
+  border-bottom: 1px solid #e0d9c8;
+  padding-bottom: 48px;
+}
+
+.category:last-child {
+  border-bottom: none;
+}
+
+.category-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(20px, 3.5vw, 32px);
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
+.category-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 16px;
+}
+
+.category-subtitle {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.nominees-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.nominee {
+  padding: 16px 20px;
+  border-left: 3px solid transparent;
+  transition: background 0.2s;
+}
+
+.nominee:hover {
+  background: rgba(199, 163, 58, 0.05);
+}
+
+.nominee.winner {
+  border-left-color: var(--gold);
+  background: rgba(199, 163, 58, 0.08);
+}
+
+.nominee.also-ran {
+  opacity: 0.5;
+  text-decoration: line-through;
+  text-decoration-color: var(--gold-dark);
+}
+
+.winner-badge {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--gold-dark);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.nominee-name {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--text-dark);
+  margin-bottom: 2px;
+}
+
+.nominee-film {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.nominee .year {
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.nominee-detail {
+  font-size: 13px;
+  color: #666;
+  font-style: italic;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+/* Lifetime Achievement special styling */
+.lifetime-category {
+  border: 2px solid var(--gold);
+  padding: 32px;
+  background: linear-gradient(135deg, rgba(199, 163, 58, 0.05) 0%, rgba(199, 163, 58, 0.02) 100%);
+}
+
+.lifetime-winner {
+  border-left-color: var(--gold);
+}
+
+.lifetime-quotes {
+  margin: 12px 0;
+  padding: 16px;
+  background: rgba(199, 163, 58, 0.06);
+  border-left: 2px solid var(--gold-dark);
+}
+
+.lifetime-quotes .nominee-detail {
+  margin-top: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(199, 163, 58, 0.1);
+}
+
+.lifetime-quotes .nominee-detail:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.rosie-response {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e0d9c8;
+  font-size: 13px;
+  color: #888;
+}
+
+/* ==========================================================================
+   Truth Social Post Section
+   ========================================================================== */
+
+.truth-section {
+  background: var(--bg-darker);
+  color: var(--text-light);
+}
+
+.truth-section .gold-title {
+  color: var(--gold);
+}
+
+.truth-post {
+  max-width: 600px;
+  margin: 48px auto 0;
+  background: #1c1c1c;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.truth-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.truth-avatar {
+  width: 48px;
+  height: 48px;
+  background: var(--gold-dark);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--gold-shimmer);
+  letter-spacing: 1px;
+}
+
+.truth-name {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text-light);
+}
+
+.truth-handle {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.truth-body p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+.truth-footer {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #333;
+}
+
+.truth-stats {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.truth-disclaimer {
+  text-align: center;
+  margin-top: 24px;
+  color: #666;
+}
+
+/* ==========================================================================
+   Real Nominees Section
+   ========================================================================== */
+
+.real-nominees-section {
+  background: #f5f2e9;
+}
+
+.real-nominees-section .category-title {
+  font-size: clamp(18px, 3vw, 26px);
+}
+
+.nominees-list.compact .nominee {
+  padding: 8px 20px;
+}
+
+.nominees-list.compact .nominee-name {
+  font-size: 14px;
+}
+
+.nominees-list.compact .nominee-film {
+  font-size: 13px;
+}
+
+.best-picture-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8px;
+}
+
+.best-picture-grid .nominee {
+  text-align: center;
+  padding: 12px;
+  background: rgba(199, 163, 58, 0.06);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.site-footer {
+  background: var(--bg-dark);
+  color: var(--text-muted);
+  padding: 48px 0;
+  text-align: center;
+}
+
+.footer-trophy {
+  font-size: 48px;
+  filter: grayscale(0.5);
+  margin-bottom: 16px;
+}
+
+.footer-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 18px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+}
+
+.footer-tagline {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--gold-dark);
+  margin-bottom: 24px;
+}
+
+.footer-legal {
+  font-size: 11px;
+  line-height: 1.8;
+  color: #666;
+  margin-bottom: 16px;
+}
+
+.footer-disclaimer {
+  font-size: 11px;
+  color: #555;
+  font-style: italic;
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Stagger delays for children */
+.staff-card:nth-child(1) { animation-delay: 0.1s; }
+.staff-card:nth-child(2) { animation-delay: 0.2s; }
+.staff-card:nth-child(3) { animation-delay: 0.3s; }
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 600px) {
+  .main-nav {
+    gap: 16px;
+    padding: 12px 16px;
+  }
+
+  .nav-link {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+
+  .hero {
+    padding: 48px 16px 64px;
+  }
+
+  .staff-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-stats {
+    gap: 16px;
+  }
+
+  .lifetime-category {
+    padding: 16px;
+  }
+
+  .best-picture-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ==========================================================================
+   Easter Egg: Marquee-style crawl for budget disclaimer
+   ========================================================================== */
+
+.crawl {
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: 'Comic Neue', cursive;
+  font-size: 11px;
+  color: var(--gold-dark);
+  padding: 8px 0;
+  background: rgba(199, 163, 58, 0.08);
+  margin-top: 32px;
+}
+
+.crawl-inner {
+  display: inline-block;
+  animation: crawl 30s linear infinite;
+}
+
+@keyframes crawl {
+  from { transform: translateX(100vw); }
+  to { transform: translateX(-100%); }
+}
