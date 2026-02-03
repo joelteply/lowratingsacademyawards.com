@@ -879,39 +879,79 @@ body {
 }
 
 /* ==========================================================================
-   Real Nominees Section
+   Official Statement Section
    ========================================================================== */
 
-.real-nominees-section {
-  background: #f5f2e9;
+.statement-section {
+  background: #fff;
+  color: #1a1a1a;
 }
 
-.real-nominees-section .category-title {
-  font-size: clamp(18px, 3vw, 26px);
+.statement-section .gold-title {
+  color: #1a1a1a;
+  font-size: clamp(18px, 3vw, 28px);
+  letter-spacing: 2px;
 }
 
-.nominees-list.compact .nominee {
-  padding: 8px 20px;
+.academy-statement {
+  max-width: 720px;
+  margin: 48px auto 0;
 }
 
-.nominees-list.compact .nominee-name {
+.statement-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 32px;
+}
+
+.statement-body {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.statement-body:first-of-type {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.statement-blame {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.statement-quote {
+  margin: 24px 0;
+  padding: 24px 32px;
+  border-left: 3px solid #999;
+  background: #f9f9f9;
+}
+
+.statement-quote p {
   font-size: 14px;
+  line-height: 1.8;
+  color: #444;
+  font-style: italic;
+  margin-bottom: 12px;
 }
 
-.nominees-list.compact .nominee-film {
-  font-size: 13px;
+.statement-quote p:last-child {
+  margin-bottom: 0;
 }
 
-.best-picture-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 8px;
-}
-
-.best-picture-grid .nominee {
-  text-align: center;
-  padding: 12px;
-  background: rgba(199, 163, 58, 0.06);
+.statement-sign {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #999;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid #ddd;
+  line-height: 1.8;
 }
 
 /* ==========================================================================
