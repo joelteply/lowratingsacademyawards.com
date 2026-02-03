@@ -171,7 +171,7 @@ const SCENE_PROMPTS: ScenePrompt[] = [
     name: 'Covfefe Refreshments',
     filename: 'covfefe.png',
     prompt:
-      'A wide shot of a White House state dinner table, but instead of fine dining it is covered in fast food. Stacks of McDonald\'s Big Macs and cheeseburgers still in wrappers, arranged in a pyramid on silver platters. Wendy\'s bags. Boxes of Domino\'s pizza. Diet Coke cans arranged like fine wine. A coffee urn labeled "COVFEFE" in gold letters. Candelabras illuminating the fast food. The Abraham Lincoln portrait visible on the wall behind. Photorealistic, warm candlelight, absurd contrast between the formal setting and the junk food. Based on the real Trump White House fast food dinner for Clemson.',
+      'A wide shot of a White House state dinner table covered in generic unbranded fast food. Stacks of plain cheeseburgers on silver platters in pyramid formations. Plain white paper bags. Plain brown cardboard pizza boxes with no writing. Plain silver aluminum soda cans with no labels or text. A large ornate silver coffee urn with the word "COVFEFE" engraved in gold. Candelabras with lit candles. The Abraham Lincoln portrait on the wall behind. Formal white tablecloth, crystal glasses. Photorealistic, warm candlelight. IMPORTANT: absolutely zero brand names, zero logos, zero text on any food packaging. All packaging must be completely plain and unbranded.',
     aspect_ratio: '16:9',
   },
   {

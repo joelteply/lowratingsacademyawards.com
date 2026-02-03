@@ -28,10 +28,42 @@ if (slides.length > 0 && dotsContainer) {
     goToSlide((currentSlide + 1) % slides.length);
   }
 
+  function prevSlide() {
+    goToSlide((currentSlide - 1 + slides.length) % slides.length);
+  }
+
   function resetInterval() {
     clearInterval(slideInterval);
     slideInterval = setInterval(nextSlide, 10000);
   }
+
+  // Touch swipe support
+  const heroEl = document.querySelector('.hero') as HTMLElement;
+  if (heroEl) {
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    heroEl.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    heroEl.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dy = e.changedTouches[0].clientY - touchStartY;
+      // Only trigger if horizontal swipe is dominant and > 50px
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+        if (dx < 0) nextSlide();
+        else prevSlide();
+      }
+    }, { passive: true });
+  }
+
+  // Arrow key support
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') nextSlide();
+    else if (e.key === 'ArrowLeft') prevSlide();
+  });
 
   resetInterval();
 }
