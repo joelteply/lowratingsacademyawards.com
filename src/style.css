@@ -723,6 +723,23 @@ body {
   color: #888;
 }
 
+/* Nominations open styling */
+.nominations-open-label {
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+.nominee.placeholder {
+  border-left: 3px dashed var(--gold-dark);
+  opacity: 0.6;
+  background: rgba(199, 163, 58, 0.03);
+}
+
 /* ==========================================================================
    Musical Entertainment Section
    ========================================================================== */
@@ -1098,10 +1115,6 @@ body {
 
   .lifetime-category {
     padding: 16px;
-  }
-
-  .best-picture-grid {
-    grid-template-columns: 1fr 1fr;
   }
 }
 
