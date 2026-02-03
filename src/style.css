@@ -943,6 +943,40 @@ body {
   margin-bottom: 0;
 }
 
+.child-drawing {
+  margin: 32px auto;
+  padding: 48px 40px 32px;
+  max-width: 400px;
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 31px,
+    #e8e8e8 31px,
+    #e8e8e8 32px
+  );
+  background-position: 0 20px;
+}
+
+.child-drawing-text {
+  font-family: 'Patrick Hand', 'Comic Neue', cursive;
+  font-size: 28px;
+  color: #223;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.child-drawing-attr {
+  font-size: 10px;
+  color: #999;
+  margin-top: 24px;
+  line-height: 1.6;
+  font-style: italic;
+  font-family: 'Source Sans 3', sans-serif;
+}
+
 .statement-sign {
   font-size: 11px;
   letter-spacing: 2px;
