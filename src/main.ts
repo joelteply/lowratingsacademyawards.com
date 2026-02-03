@@ -115,7 +115,7 @@ const nomineesSection = document.querySelector('.nominees-section');
 if (nomineesSection) {
   const crawl = document.createElement('div');
   crawl.className = 'crawl';
-  crawl.innerHTML = `<span class="crawl-inner">DISCLAIMER: The Low Ratings Academy Awards has a total operating budget of $11.99 (domain registration). All trophies are spray-painted participation ribbons. Catering has been replaced with a vending machine (exact change only). Security is handled by a stern note taped to the door. Red carpet sourced from a clearance sale at Home Depot. All grievances are real and sourced directly from Truth Social. No animals were harmed but several egos were bruised. &nbsp;&nbsp;&nbsp;&#127942;&nbsp;&nbsp;&nbsp;</span>`;
+  crawl.innerHTML = `<span class="crawl-inner">DISCLAIMER: All grievances are real and sourced directly from Truth Social. The President of the United States shared a post claiming Joe Biden was "executed in 2020" and replaced by "clones doubles &amp; robotic engineered soulless mindless entities." He shared this with 10 million followers without comment. He is the President. &nbsp;&nbsp;&nbsp;&#127942;&nbsp;&nbsp;&nbsp;</span>`;
   nomineesSection.appendChild(crawl);
 }
 
