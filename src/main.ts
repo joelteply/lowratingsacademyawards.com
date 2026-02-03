@@ -50,7 +50,7 @@ const observer = new IntersectionObserver(
 );
 
 // Observe all staff cards, categories, and sections
-document.querySelectorAll<HTMLElement>('.staff-card, .category, .featured-film, .truth-post').forEach((el) => {
+document.querySelectorAll<HTMLElement>('.staff-card, .category, .featured-film, .truth-post, .entertainment-card').forEach((el) => {
   el.style.opacity = '0';
   observer.observe(el);
 });

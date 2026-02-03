@@ -724,6 +724,89 @@ body {
 }
 
 /* ==========================================================================
+   Musical Entertainment Section
+   ========================================================================== */
+
+.entertainment-section {
+  background: var(--bg-dark);
+  color: var(--text-light);
+}
+
+.entertainment-card {
+  max-width: 700px;
+  margin: 48px auto 0;
+}
+
+.entertainment-intro {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 16px;
+  font-style: italic;
+  color: #ccc;
+  text-align: center;
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.musical-lineup {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.musical-act {
+  padding: 20px 24px;
+  border-left: 3px solid transparent;
+}
+
+.musical-act.cancelled {
+  border-left-color: #555;
+  opacity: 0.6;
+}
+
+.musical-act.headliner {
+  border-left-color: var(--gold);
+  background: rgba(199, 163, 58, 0.08);
+}
+
+.act-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.cancelled .act-name {
+  color: #777;
+}
+
+.headliner .act-name {
+  color: var(--gold);
+}
+
+.act-status {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--gold-dark);
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.act-note {
+  font-size: 13px;
+  color: #999;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.entertainment-section .budget-note {
+  text-align: center;
+  margin-top: 32px;
+  color: #666;
+}
+
+/* ==========================================================================
    Truth Social Post Section
    ========================================================================== */
 
