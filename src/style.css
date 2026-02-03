@@ -116,6 +116,12 @@ body {
   height: 85vh;
   min-height: 500px;
   max-height: 900px;
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.hero:active {
+  cursor: grabbing;
 }
 
 .hero-slides {

@@ -57,6 +57,29 @@ if (slides.length > 0 && dotsContainer) {
         else prevSlide();
       }
     }, { passive: true });
+
+    // Mouse drag support for desktop
+    let mouseStartX = 0;
+    let dragging = false;
+
+    heroEl.addEventListener('mousedown', (e) => {
+      mouseStartX = e.clientX;
+      dragging = true;
+    });
+
+    heroEl.addEventListener('mouseup', (e) => {
+      if (!dragging) return;
+      dragging = false;
+      const dx = e.clientX - mouseStartX;
+      if (Math.abs(dx) > 50) {
+        if (dx < 0) nextSlide();
+        else prevSlide();
+      }
+    });
+
+    heroEl.addEventListener('mouseleave', () => {
+      dragging = false;
+    });
   }
 
   // Arrow key support
